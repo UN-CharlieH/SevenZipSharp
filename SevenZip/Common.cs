@@ -4,7 +4,9 @@ namespace SevenZip
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
+#if !NETSTANDARD
     using System.Runtime.Remoting.Messaging;
+#endif
     using System.Threading;
 
 #if UNMANAGED
@@ -49,9 +51,13 @@ namespace SevenZip
         /// <param name="ar">IAsyncResult instance.</param>
         internal static void AsyncCallbackMethod(IAsyncResult ar)
         {
+#if !NETSTANDARD
             var result = (AsyncResult)ar;
             result.AsyncDelegate.GetType().GetMethod("EndInvoke").Invoke(result.AsyncDelegate, new[] { ar });
             ((SevenZipBase)ar.AsyncState).ReleaseContext();
+#else
+            throw new NotImplementedException("Migrate to async/await pattern for .NET Standard");
+#endif
         }
 
         internal virtual void SaveContext()
@@ -149,7 +155,7 @@ namespace SevenZip
             }
         }
 
-        #region Constructors
+         #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the SevenZipBase class
@@ -162,7 +168,7 @@ namespace SevenZip
             _uniqueID = GetUniqueID();
         }
 
-        #endregion
+         #endregion
 
         /// <summary>
         /// Removes the UniqueID from the list.
@@ -336,7 +342,7 @@ namespace SevenZip
         /// </summary>
         private readonly List<Exception> _exceptions = new List<Exception>();
 
-        #region Constructors
+         #region Constructors
         /// <summary>
         /// Initializes a new instance of the CallbackBase class.
         /// </summary>
@@ -359,7 +365,7 @@ namespace SevenZip
             _password = password;
             _reportErrors = true;
         }
-        #endregion
+         #endregion
 
         /// <summary>
         /// Gets or sets the archive password
@@ -700,4 +706,4 @@ namespace SevenZip
     }
 #endif
 #endif
-}
+      }

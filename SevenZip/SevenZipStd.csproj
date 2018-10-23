@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.64.1</Version>
+    <Company>Markovtsev Vadim</Company>
+    <Copyright>(c) Markovtsev Vadim 2009, 2010, licenced under LGPLv3</Copyright>
+    <Product>SevenZipSharp</Product>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>SevenZip.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <AssemblyName>SevenZipSharp</AssemblyName>
+    <RootNamespace>SevenZip</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;UNMANAGED;COMPRESS;LZMA_STREAM;SFX;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;UNMANAGED;COMPRESS;LZMA_STREAM;SFX;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="arch\Test.bzip2.7z" />
+    <None Remove="arch\Test.lzma.7z" />
+    <None Remove="arch\Test.lzma2.7z" />
+    <None Remove="arch\Test.ppmd.7z" />
+    <None Remove="arch\Test.rar" />
+    <None Remove="arch\Test.tar" />
+    <None Remove="arch\Test.txt.bz2" />
+    <None Remove="arch\Test.txt.gz" />
+    <None Remove="arch\Test.txt.xz" />
+    <None Remove="arch\Test.zip" />
+    <None Remove="sfx\7z.sfx" />
+    <None Remove="sfx\7zCon.sfx" />
+    <None Remove="sfx\7zS.sfx" />
+    <None Remove="sfx\7zSD.sfx" />
+    <None Remove="sfx\7zxSD_All.sfx" />
+    <None Remove="sfx\7zxSD_All_x64.sfx" />
+    <None Remove="sfx\7zxSD_Deflate.sfx" />
+    <None Remove="sfx\7zxSD_Deflate_x64.sfx" />
+    <None Remove="sfx\7zxSD_LZMA.sfx" />
+    <None Remove="sfx\7zxSD_LZMA2.sfx" />
+    <None Remove="sfx\7zxSD_LZMA2_x64.sfx" />
+    <None Remove="sfx\7zxSD_LZMA_x64.sfx" />
+    <None Remove="sfx\7zxSD_PPMd.sfx" />
+    <None Remove="sfx\7zxSD_PPMd_x64.sfx" />
+    <None Remove="sfx\Configs.xml" />
+    <None Remove="sfx\Configs.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="arch\Test.bzip2.7z" />
+    <EmbeddedResource Include="arch\Test.lzma.7z" />
+    <EmbeddedResource Include="arch\Test.lzma2.7z" />
+    <EmbeddedResource Include="arch\Test.ppmd.7z" />
+    <EmbeddedResource Include="arch\Test.rar" />
+    <EmbeddedResource Include="arch\Test.tar" />
+    <EmbeddedResource Include="arch\Test.txt.bz2" />
+    <EmbeddedResource Include="arch\Test.txt.gz" />
+    <EmbeddedResource Include="arch\Test.txt.xz" />
+    <EmbeddedResource Include="arch\Test.zip" />
+    <EmbeddedResource Include="sfx\7z.sfx" />
+    <EmbeddedResource Include="sfx\7zCon.sfx" />
+    <EmbeddedResource Include="sfx\7zS.sfx" />
+    <EmbeddedResource Include="sfx\7zSD.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_All.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_All_x64.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_Deflate.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_Deflate_x64.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_LZMA.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_LZMA2.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_LZMA2_x64.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_LZMA_x64.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_PPMd.sfx" />
+    <EmbeddedResource Include="sfx\7zxSD_PPMd_x64.sfx" />
+    <EmbeddedResource Include="sfx\Configs.xml" />
+    <EmbeddedResource Include="sfx\Configs.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>

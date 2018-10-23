@@ -18,15 +18,18 @@
             {
                 var result = new List<TestFile>();
 
-                foreach (var file in Directory.GetFiles(Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData")))
-                {
-                    if (file.Contains("multi"))
-                    {
-                        continue;
-                    }
+            try {
+               foreach (var file in Directory.GetFiles(Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData"))) {
+                  if (file.Contains("multi")) {
+                     continue;
+                  }
 
-                    result.Add(new TestFile(file));
-                }
+                  result.Add(new TestFile(file));
+               }
+            }
+            catch (DirectoryNotFoundException) {
+                // static method called before path is correctly set by base class
+            }
 
                 return result;
             }
